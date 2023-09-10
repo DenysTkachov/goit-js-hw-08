@@ -6,10 +6,7 @@ const messageInput = form.querySelector('[name="message"]');
 
 const LS_KEY = 'feedback-form-state';
 
-// Очистити localStorage, якщо є потреба
-// localStorage.removeItem(LS_KEY);
 
-// Завантаження даних з localStorage
 const savedFormData = JSON.parse(localStorage.getItem(LS_KEY));
 
 if (savedFormData) {
@@ -17,7 +14,7 @@ if (savedFormData) {
   messageInput.value = savedFormData.message;
 }
 
-// Функція для збереження даних у localStorage
+
 function saveFormDataToLocalStorage() {
   const formData = {
     email: emailInput.value,
@@ -27,10 +24,10 @@ function saveFormDataToLocalStorage() {
   localStorage.setItem(LS_KEY, JSON.stringify(formData));
 }
 
-// Оновлення localStorage за допомогою throttle
+
 form.addEventListener('input', throttle(saveFormDataToLocalStorage, 500));
 
-// Очистка localStorage при подачі форми
+
 form.addEventListener('submit', event => {
   event.preventDefault();
 
